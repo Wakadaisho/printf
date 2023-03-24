@@ -13,3 +13,6 @@ The project files are laid out as follows:
 
 ### Task 0
 Handles the following conversion specifiers; `c`, `s`, `%`.
+
+### Task 1
+Handles the following conversion specifiers; `d`, `i`.
