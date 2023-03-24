@@ -63,6 +63,17 @@ int _putcharacter(char spec[], va_list args);
 int _putstring(char spec[], va_list args);
 
 /**
+ * _putint - print an integer passed in args
+ *
+ * @spec: possible modifier to specifier passed to format in printf
+ * @args: current state of variadic arguments passed
+ *
+ * Return:	number of characters printed
+ *			-1 on failure
+ */
+int _putint(char spec[], va_list args);
+
+/**
  * _putarg - print a an argument passed in args
  *
  * @s: pointer to location in string word staring with '%'

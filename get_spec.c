@@ -13,6 +13,8 @@ int (*get_spec(char *s))(char spec[], va_list args)
 	spec_t specs[] = {
 		{"c", _putcharacter},
 		{"s", _putstring},
+		{"d", _putint},
+		{"i", _putint},
 		{NULL, NULL}
 	};
 

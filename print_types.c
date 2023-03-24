@@ -66,3 +66,52 @@ int _putstring(char spec[], va_list args)
 
 	return (ret);
 }
+
+/**
+ * _putint - print an integer passed in args
+ *
+ * @spec: possible modifier to specifier passed to format in printf
+ * @args: current state of variadic arguments passed
+ *
+ * Return:	number of characters printed
+ *			-1 on failure
+ */
+int _putint(char spec[], va_list args)
+{
+	int ret = 0, power = 1, n, n_cp;
+
+	n = va_arg(args, int);
+	spec[0] = spec[0];
+
+	if (n < 0)
+	{
+		_putchar ('-');
+		ret++;
+		n *= -1;
+	}
+
+	n_cp = n;
+
+	if (n == 0)
+	{
+		_putchar('0');
+		ret++;
+	}
+
+	while (n_cp)
+	{
+		power *= 10;
+		n_cp /= 10;
+	}
+
+	power /= 10;
+
+	while (n)
+	{
+		_putchar('0' + n / power);
+		n %= power;
+		power /= 10;
+		ret++;
+	}
+	return (ret);
+}
