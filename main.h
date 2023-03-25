@@ -41,6 +41,28 @@ typedef struct spec_mod
 int (*get_spec(char *s))(char mod[], va_list args);
 
 /**
+ * _pow - return the exponent value of a number
+ *
+ * @n: the base value
+ * @e: the exponent
+ *
+ * Return: integer
+ */
+int _pow(int n, int e);
+
+/**
+ * _convertBase - converts a base 10 number to any base up to 36
+ *
+ * @n: base 10 number to convert
+ * @base: base to convert to
+ * @u: flag to specify casing of alphabet characters, > base 10
+ *	1 for uppercase, 0 for lowercase
+ *
+ * Return: int, number of digits in converted value
+ */
+int _convertBase(unsigned int n, int base, int u);
+
+/**
  * _putcharacter - print a single charater passed in args
  *
  * @spec: possible modifier to specifier passed to format in printf
@@ -72,6 +94,17 @@ int _putstring(char spec[], va_list args);
  *			-1 on failure
  */
 int _putint(char spec[], va_list args);
+
+/**
+ * _putbinary - print a number passed in args as binary
+ *
+ * @spec: possible modifier to specifier passed to format in printf
+ * @args: current state of variadic arguments passed
+ *
+ * Return:	number of characters printed
+ *			-1 on failure
+ */
+int _putbinary(char spec[], va_list args);
 
 /**
  * _putarg - print a an argument passed in args

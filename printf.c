@@ -23,13 +23,14 @@ int _printf(const char *format, ...)
 		{
 			_putarg_ret = _putarg(format + i, args, &mod_length);
 			if (_putarg_ret == -1)
-			return (-1);
+				return (-1);
 			ret += _putarg_ret;
 			i += mod_length;
 		}
 		else
 		{
 			_putchar(*(format + i));
+			ret++;
 			i++;
 		}
 	}

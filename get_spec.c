@@ -15,6 +15,7 @@ int (*get_spec(char *s))(char spec[], va_list args)
 		{"s", _putstring},
 		{"d", _putint},
 		{"i", _putint},
+		{"b", _putbinary},
 		{NULL, NULL}
 	};
 
