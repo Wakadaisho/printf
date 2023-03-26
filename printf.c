@@ -1,5 +1,4 @@
 #include "main.h"
-#include <stdio.h>
 
 /**
  * _printf - print a format specified string to standard output
@@ -13,7 +12,8 @@
 int _printf(const char *format, ...)
 {
 	va_list args;
-	int ret, i, _putarg_ret, mod_length;
+	int ret, i, mod_length;
+	char buffer[1024] = {'\0'};
 
 	ret = i = 0;
 	va_start(args, format);
@@ -22,18 +22,15 @@ int _printf(const char *format, ...)
 	{
 		if (*(format + i) == '%')
 		{
-			_putarg_ret = _putarg(format + i, args, &mod_length);
-			ret += _putarg_ret;
+			ret += _putarg(format + i, args, &mod_length, buffer);
 			i += mod_length;
 		}
 		else
 		{
-			_putchar(*(format + i));
-			ret++;
-			i++;
+			ret += _putchar(*(format + i++), buffer);
 		}
 	}
-
+	ret += _writebuffer(buffer);
 	va_end(args);
 	return (ret);
 }
@@ -44,15 +41,16 @@ int _printf(const char *format, ...)
  * @s: pointer to location in string word staring with '%'
  * @args: current state of variadic arguments passed
  * @mod_length: number of modifier characters to skip over
+ * @buffer: character buffer to store future output
  *
  * Return:	number of characters printed
  *			-1 on failure
  */
-int _putarg(const char *s, va_list args, int *mod_length)
+int _putarg(const char *s, va_list args, int *mod_length, char buffer[])
 {
 	int ret, i;
 	char spec[10];
-	int (*f)(char mod[], va_list);
+	int (*f)(char [], va_list, char []);
 
 	*mod_length = 1;
 	spec[0] = s[0];
@@ -72,11 +70,11 @@ int _putarg(const char *s, va_list args, int *mod_length)
 	if (f == NULL)
 	{
 		for (i = 0; i < *mod_length - 1; i++)
-			_putchar(*(spec + i));
+			_putchar(*(spec + i), buffer);
 		return (*mod_length - 1);
 	}
 
-	ret = f(spec, args);
+	ret = f(spec, args, buffer);
 
 	return (ret);
 }

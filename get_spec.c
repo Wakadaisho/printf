@@ -7,7 +7,7 @@
  *
  * Return: int (*)(char [], va_list) - function that was as a binary operator
  */
-int (*get_spec(char *s))(char spec[], va_list args)
+int (*get_spec(char *s))(char spec[], va_list args, char buffer[])
 {
 	int i = 0;
 	spec_t specs[] = {

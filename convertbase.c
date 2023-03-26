@@ -28,18 +28,19 @@ int _pow(int n, int e)
  * @base: base to convert to
  * @u: flag to specify casing of alphabet characters, > base 10
  *	1 for uppercase, 0 for lowercase
+ * @buffer: character buffer to store future output
  *
  * Return: int, number of digits in converted value
  */
-int _convertBase(unsigned int n, int base, int u)
+int _convertBase(unsigned int n, int base, int u, char buffer[])
 {
 	unsigned int n_copy = n;
 	int ret = 0, len = 0, result;
 
 	if (n == 0)
 	{
-		_putchar('0');
-		return (1);
+		ret += _putchar('0', buffer);
+		return (ret);
 	}
 
 	while (n_copy)
@@ -48,18 +49,18 @@ int _convertBase(unsigned int n, int base, int u)
 		len++;
 	}
 
-	ret = len--;
+	len--;
 
 	while (len >= 0)
 	{
 		result = _pow(base, len--);
 		if (n / result > 9)
 		{
-			_putchar('a' - (u  ? 32 : 0) + (n / result) - 10);
+			ret += _putchar('a' - (u  ? 32 : 0) + (n / result) - 10, buffer);
 		}
 		else
 		{
-			_putchar('0' + (n / result));
+			ret += _putchar('0' + (n / result), buffer);
 		}
 		n %= result;
 	}
