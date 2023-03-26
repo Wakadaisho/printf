@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdio.h>
 
 /**
  * _printf - print a format specified string to standard output
@@ -22,8 +23,6 @@ int _printf(const char *format, ...)
 		if (*(format + i) == '%')
 		{
 			_putarg_ret = _putarg(format + i, args, &mod_length);
-			if (_putarg_ret == -1)
-				return (-1);
 			ret += _putarg_ret;
 			i += mod_length;
 		}
@@ -51,11 +50,12 @@ int _printf(const char *format, ...)
  */
 int _putarg(const char *s, va_list args, int *mod_length)
 {
-	int ret;
-	char spec[5];
-
+	int ret, i;
+	char spec[10];
 	int (*f)(char mod[], va_list);
-	*mod_length = 0;
+
+	*mod_length = 1;
+	spec[0] = s[0];
 
 	while (_isalpha(*(s + *mod_length)) == -1)
 	{
@@ -67,17 +67,14 @@ int _putarg(const char *s, va_list args, int *mod_length)
 	*mod_length += 1;
 	spec[*mod_length] = '\0';
 
-	if (spec[0] == '%' && spec[1] == '%')
-	{
-		_putchar('%');
-		*mod_length = 2;
-		return (1);
-	}
-
 	f = get_spec(spec + (*mod_length - 1));
 
 	if (f == NULL)
-		return (-1);
+	{
+		for (i = 0; i < *mod_length - 1; i++)
+			_putchar(*(spec + i));
+		return (*mod_length - 1);
+	}
 
 	ret = f(spec, args);
 

@@ -106,7 +106,7 @@ int _putint(char spec[], va_list args)
 
 	power /= 10;
 
-	while (n)
+	while (power)
 	{
 		_putchar('0' + n / power);
 		n %= power;
