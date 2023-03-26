@@ -32,7 +32,7 @@ int _pow(int n, int e)
  *
  * Return: int, number of digits in converted value
  */
-int _convertBase(unsigned int n, int base, int u, char *buffer)
+int _convertBase(unsigned int n, int base, int u, char buffer[])
 {
 	unsigned int n_copy = n;
 	int ret = 0, len = 0, result;

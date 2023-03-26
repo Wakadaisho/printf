@@ -9,7 +9,7 @@
  *
  * Return: integer
  */
-int _strlen(char *buffer)
+int _strlen(char buffer[])
 {
 	int ret = 0;
 	int i = 0;
@@ -27,7 +27,7 @@ int _strlen(char *buffer)
  * Return:	-1 on failure
  *		number of characters written on success;
  */
-int _writebuffer(char *buffer)
+int _writebuffer(char buffer[])
 {
 	int ret = write(1, buffer, _strlen(buffer));
 
@@ -35,7 +35,7 @@ int _writebuffer(char *buffer)
 
 	buffer[0] = '\0';
 	
-	printf("(%d)", ret);
+	/*printf("(%d)", ret);*/
 	return (ret);
 }
 
@@ -48,7 +48,7 @@ int _writebuffer(char *buffer)
  * Return:	-1 on failure
  *			1 on success;
  */
-int _putchar(char c, char *buffer)
+int _putchar(char c, char buffer[])
 {
 	int ret = 0;
 	

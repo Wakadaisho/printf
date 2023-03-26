@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * _putcharacter - print a single charater passed in args
+ * _putbinary - print a number passed in args as binary
  *
  * @spec: possible modifier to specifier passed to format in printf
  * @args: current state of variadic arguments passed
@@ -10,13 +10,15 @@
  * Return:	number of characters printed
  *			-1 on failure
  */
-int _putcharacter(char spec[], va_list args, char *buffer)
+int _putbinary(char spec[], va_list args, char buffer[])
 {
-	int ret;
+	int ret = 0, n;
+
+	n = va_arg(args, unsigned int);
 
 	spec[0] = spec[0];
 
-	ret = _putchar(va_arg(args, int), buffer);
+	ret += _convertBase(n, 2, 0, buffer);
 
 	return (ret);
 }

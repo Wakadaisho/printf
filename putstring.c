@@ -10,7 +10,7 @@
  * Return:	number of characters printed
  *			-1 on failure
  */
-int _putstring(char spec[], va_list args, char buffer[])
+int _putstring(char spec[], va_list args, char *buffer)
 {
 	int ret, temp_ret;
 	char *s;

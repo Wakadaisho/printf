@@ -48,7 +48,7 @@ int _printf(const char *format, ...)
  * Return:	number of characters printed
  *			-1 on failure
  */
-int _putarg(const char *s, va_list args, int *mod_length, char *buffer)
+int _putarg(const char *s, va_list args, int *mod_length, char buffer[])
 {
 	int ret, i;
 	char spec[10];
