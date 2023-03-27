@@ -16,3 +16,6 @@ Handles the following conversion specifiers; `c`, `s`, `%`.
 
 ### Task 1
 Handles the following conversion specifiers; `d`, `i`.
+
+### Task 2
+Handels the following concersion specifier `b`.
