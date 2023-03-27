@@ -69,15 +69,17 @@ int _putchar(char c, char *buffer)
  * Return:	-1 on failure
  *			1 on success;
  */
-int _putstr(char *s, char buffer[])
+int _putstr(char *s, char *buffer)
 {
-	int ret = 0;
+	int ret = 0, temp_ret = 0;
 
 	while (*s)
 	{
-		ret += _putchar(*s++, buffer);
+		temp_ret = _putchar(*s++, buffer);
+		if (temp_ret == -1)
+			return (-1);
+		ret += temp_ret;
 	}
 
 	return (ret);
 }
-

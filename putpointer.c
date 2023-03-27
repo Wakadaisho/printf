@@ -18,7 +18,6 @@ int _putpointer(char spec[], va_list args, char *buffer)
 	spec[0] = spec[0];
 	n = va_arg(args, unsigned long int);
 
-
 	ret += _putchar('0', buffer);
 	ret += _putchar('x', buffer);
 

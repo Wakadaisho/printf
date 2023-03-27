@@ -10,7 +10,7 @@
  * Return:	number of characters printed
  *			-1 on failure
  */
-int _putunsign(char spec[], va_list args, char buffer[])
+int _putunsign(char spec[], va_list args, char *buffer)
 {
 	unsigned int ret = 0, power = 1, n, n_cp;
 
@@ -24,13 +24,11 @@ int _putunsign(char spec[], va_list args, char buffer[])
 		ret += _putchar('0', buffer);
 	}
 
-	while (n_cp)
+	while (n_cp > 9)
 	{
 		power *= 10;
 		n_cp /= 10;
 	}
-
-	power /= 10;
 
 	while (power)
 	{

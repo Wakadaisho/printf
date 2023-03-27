@@ -10,7 +10,7 @@
  * Return:	-1 on failure
  *			1 on success;
  */
-int _putpaddingint(form_t *form, int sign, char buffer[])
+int _putpaddingint(form_t *form, int sign, char *buffer)
 {
 	int ret = 0, len = sign, negative = 0;
 

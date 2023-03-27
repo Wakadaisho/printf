@@ -52,7 +52,7 @@ int _putchar(char c, char *buffer);
  * Return:	-1 on failure
  *			1 on success;
  */
-int _putstr(char *s, char buffer[]);
+int _putstr(char *s, char *buffer);
 
 /**
  * struct spec_mod - Struct spec_mod
@@ -186,7 +186,7 @@ int _putbinary(char spec[], va_list args, char *buffer);
  * Return:	number of characters printed
  *			-1 on failure
  */
-int _putspecialstring(char spec[], va_list args, char buffer[]);
+int _putspecialstring(char spec[], va_list args, char *buffer);
 
 /**
  * _putpointer - print a pointer address passed in args
@@ -210,7 +210,7 @@ int _putpointer(char spec[], va_list args, char *buffer);
  * Return:	-1 on failure
  *			1 on success;
  */
-int _putpaddingint(form_t *form, int sign, char buffer[]);
+int _putpaddingint(form_t *form, int sign, char *buffer);
 
 /**
  * _putarg - print a an argument passed in args
@@ -246,7 +246,7 @@ int _printf(const char *format, ...);
  * Return:      number of characters printed
  *                      -1 on failure
  */
-int _putunsign(char spec[], va_list args, char buffer[]);
+int _putunsign(char spec[], va_list args, char *buffer);
 
 /**
  * _putoctal - print a number passed in args as an octal
@@ -258,7 +258,7 @@ int _putunsign(char spec[], va_list args, char buffer[]);
  * Return:      number of characters printed
  *                      -1 on failure
  */
-int _putoctal(char spec[], va_list args, char buffer[]);
+int _putoctal(char spec[], va_list args, char *buffer);
 
 /**
  * _putlowerhex - print a number passed in args as hexadecimal with lowercase
@@ -270,7 +270,7 @@ int _putoctal(char spec[], va_list args, char buffer[]);
  * Return:      number of characters printed
  *                      -1 on failure
  */
-int _putlowerhex(char spec[], va_list args, char buffer[]);
+int _putlowerhex(char spec[], va_list args, char *buffer);
 
 /**
  * _putupperhex - print a number passed in args as hexadecimal with lowercase
@@ -282,6 +282,6 @@ int _putlowerhex(char spec[], va_list args, char buffer[]);
  * Return:      number of characters printed
  *                      -1 on failure
  */
-int _putupperhex(char spec[], va_list args, char buffer[]);
+int _putupperhex(char spec[], va_list args, char *buffer);
 
 #endif /* _MAIN_H_ */

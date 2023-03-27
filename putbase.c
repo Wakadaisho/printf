@@ -12,7 +12,8 @@
  */
 int _putbinary(char spec[], va_list args, char *buffer)
 {
-	int ret = 0, n;
+	int ret = 0;
+	unsigned int n;
 
 	n = va_arg(args, unsigned int);
 

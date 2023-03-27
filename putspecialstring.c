@@ -11,7 +11,7 @@
  * Return:	number of characters printed
  *			-1 on failure
  */
-int _putspecialstring(char spec[], va_list args, char buffer[])
+int _putspecialstring(char spec[], va_list args, char *buffer)
 {
 	int ret;
 	char *s;

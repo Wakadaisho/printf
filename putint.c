@@ -28,13 +28,12 @@ int _putint(char spec[], va_list args, char *buffer)
 	if (!form.width)
 		form.width = 2;
 	n_cp = n;
-	while (n_cp)
+	while (n_cp > 9)
 	{
 		power *= 10;
 		n_cp /= 10;
 		len++;
 	}
-	power /= 10;
 	ret += _putpaddingint(&form, negative ? -len : len, buffer);
 	if (n == 0)
 		ret += _putchar('0', buffer);
