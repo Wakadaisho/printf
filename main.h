@@ -155,5 +155,52 @@ int _putarg(const char *s, va_list args, int *mod_length, char buffer[]);
  */
 int _printf(const char *format, ...);
 
+/**
+ * _putusign - print an unsigned integer passed in args
+ *
+ * @spec: possible modifier to specifier passed to format in printf
+ * @args: current state of variadic arguments passed
+ * @buffer: character buffer to store future output
+ *
+ * Return:      number of characters printed
+ *                      -1 on failure
+ */
+int _putunsign(char spec[], va_list args, char buffer[]);
+
+/**
+ * _putoctal - print a number passed in args as an octal
+ *
+ * @spec: possible modifier to specifier passed to format in printf
+ * @args: current state of variadic arguments passed
+ * @buffer: character buffer to store future output
+ *
+ * Return:      number of characters printed
+ *                      -1 on failure
+ */
+int _putoctal(char spec[], va_list args, char buffer[]);
+
+/**
+ * _putlowerhex - print a number passed in args as hexadecimal with lowercase
+ *
+ * @spec: possible modifier to specifier passed to format in printf
+ * @args: current state of variadic arguments passed
+ * @buffer: character buffer to store future output
+ *
+ * Return:      number of characters printed
+ *                      -1 on failure
+ */
+int _putlowerhex(char spec[], va_list args, char buffer[]);
+
+/**
+ * _putupperhex - print a number passed in args as hexadecimal with lowercase
+ *
+ * @spec: possible modifier to specifier passed to format in printf
+ * @args: current state of variadic arguments passed
+ * @buffer: character buffer to store future output
+ *
+ * Return:      number of characters printed
+ *                      -1 on failure
+ */
+int _putupperhex(char spec[], va_list args, char buffer[]);
 
 #endif /* _MAIN_H_ */
