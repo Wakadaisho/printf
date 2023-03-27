@@ -8,11 +8,12 @@
  *
  * Return: integer
  */
-int _strlen(char buffer[])
+int _strlen(char *buffer)
 {
 	int ret = 0;
+	int i = 0;
 
-	while (*buffer++)
+	while (i < 1024 && *(buffer + i++))
 		ret++;
 	return (ret);
 }
@@ -25,11 +26,12 @@ int _strlen(char buffer[])
  * Return:	-1 on failure
  *		number of characters written on success;
  */
-int _writebuffer(char buffer[])
+int _writebuffer(char *buffer)
 {
 	int ret = write(1, buffer, _strlen(buffer));
 
 	buffer[0] = '\0';
+	buffer[1] = '\0';
 
 	return (ret);
 }
@@ -43,11 +45,11 @@ int _writebuffer(char buffer[])
  * Return:	-1 on failure
  *			1 on success;
  */
-int _putchar(char c, char buffer[])
+int _putchar(char c, char *buffer)
 {
 	int ret = 0;
 
-	if (_strlen(buffer) + sizeof(c) + 1 >= 1024)
+	if (_strlen(buffer) + sizeof(c) >= 1024)
 	{
 		ret = _writebuffer(buffer);
 	}
@@ -57,3 +59,25 @@ int _putchar(char c, char buffer[])
 
 	return (ret);
 }
+
+/**
+ * _putstr - output a string to standard output
+ *
+ * @s: string to output
+ * @buffer: character buffer to store future output
+ *
+ * Return:	-1 on failure
+ *			1 on success;
+ */
+int _putstr(char *s, char buffer[])
+{
+	int ret = 0;
+
+	while (*s)
+	{
+		ret += _putchar(*s++, buffer);
+	}
+
+	return (ret);
+}
+
