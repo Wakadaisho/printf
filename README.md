@@ -18,4 +18,7 @@ Handles the following conversion specifiers; `c`, `s`, `%`.
 Handles the following conversion specifiers; `d`, `i`.
 
 ### Task 2
-Handels the following concersion specifier `b`.
+Handles the following concersion specifier `b`.
+
+### Task 3 
+Handles the following conversion specifiers `u`, `o`, `x`,`X.`
