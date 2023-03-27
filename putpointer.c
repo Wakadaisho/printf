@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * _putstring - print a string passed in args
+ * _putpointer - print a pointer address passed in args
  *
  * @spec: possible modifier to specifier passed to format in printf
  * @args: current state of variadic arguments passed
@@ -10,23 +10,19 @@
  * Return:	number of characters printed
  *			-1 on failure
  */
-int _putstring(char spec[], va_list args, char buffer[])
+int _putpointer(char spec[], va_list args, char *buffer)
 {
-	int ret, temp_ret;
-	char *s;
+	int ret = 0;
+	unsigned long int n;
 
 	spec[0] = spec[0];
+	n = va_arg(args, unsigned long int);
 
-	s = va_arg(args, char *);
-	ret = 0;
 
-	while (*s)
-	{
-		temp_ret = _putchar(*s, buffer);
+	ret += _putchar('0', buffer);
+	ret += _putchar('x', buffer);
 
-		ret += temp_ret;
-		s++;
-	}
+	ret += _convertBase(n, 16, 0, buffer);
 
 	return (ret);
 }

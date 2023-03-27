@@ -8,10 +8,10 @@
  *
  * Return: integer
  */
-int _pow(int n, int e)
+unsigned long int _pow(unsigned long int n, int e)
 {
 	int i = 0;
-	int ret = 1;
+	unsigned long int ret = 1;
 
 	while (i++ < e)
 	{
@@ -32,10 +32,12 @@ int _pow(int n, int e)
  *
  * Return: int, number of digits in converted value
  */
-int _convertBase(unsigned int n, int base, int u, char *buffer)
+int _convertBase(unsigned long int n, int base, int u, char *buffer)
 {
-	unsigned int n_copy = n;
-	int ret = 0, len = 0, result;
+	unsigned long int n_copy, result;
+	int ret = 0, len = 0;
+
+	n_copy = n;
 
 	if (n == 0)
 	{
@@ -64,6 +66,5 @@ int _convertBase(unsigned int n, int base, int u, char *buffer)
 		}
 		n %= result;
 	}
-
 	return (ret);
 }

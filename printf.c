@@ -1,5 +1,4 @@
 #include "main.h"
-#include <stdio.h>
 
 /**
  * _printf - print a format specified string to standard output
@@ -29,9 +28,8 @@ int _printf(const char *format, ...)
 		else
 		{
 			ret += _putchar(*(format + i++), buffer);
-		}		
+		}
 	}
-	printf("Before write buffer (%d)\n", ret);
 	ret += _writebuffer(buffer);
 	va_end(args);
 	return (ret);

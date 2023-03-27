@@ -16,6 +16,8 @@ int (*get_spec(char *s))(char spec[], va_list args, char *buffer)
 		{"d", _putint},
 		{"i", _putint},
 		{"b", _putbinary},
+		{"S", _putspecialstring},
+		{"p", _putpointer},
 		{NULL, NULL}
 	};
 
@@ -27,4 +29,62 @@ int (*get_spec(char *s))(char spec[], va_list args, char *buffer)
 	}
 
 	return (NULL);
+}
+/**
+ * checkFlag - set a flag if a character matches
+ *
+ * @c: character to match to flag
+ * @form: form_t struct pointer that holds the flags set
+ *
+ * Return:	0 - no flag set
+ *		1 -flag set
+ */
+int checkFlag(char c, form_t *form)
+{
+	int changed = 1;
+
+	switch (c)
+	{
+		case ' ':
+			form->flag_space = 1;
+			break;
+		case '+':
+			form->flag_plus = 1;
+			break;
+		case '#':
+			form->flag_hash = 1;
+			break;
+		case '-':
+			form->flag_minus = 1;
+			break;
+		case '0':
+			form->flag_zero = 1;
+			break;
+		default:
+			changed = 0;
+			break;
+	}
+
+	return (changed);
+}
+
+/**
+ * get_form - return a struct showing what format modifiers are used
+ *
+ * @form: specifier to get conversion specifiers from
+ *
+ * Return: struct form_t
+ */
+form_t get_form(char *form)
+{
+	form_t ret = {0};
+	char *p = form;
+
+	while (*p)
+	{
+		checkFlag(*p, &ret);
+		p++;
+	}
+
+	return (ret);
 }

@@ -1,6 +1,5 @@
 #include "main.h"
 #include <unistd.h>
-#include <stdio.h>
 
 /**
  * _strlen - find the length of a buffer
@@ -31,11 +30,9 @@ int _writebuffer(char *buffer)
 {
 	int ret = write(1, buffer, _strlen(buffer));
 
-	/*printf("Writing to buffer (%d:%d)\n", _strlen(buffer), ret);*/
-
 	buffer[0] = '\0';
-	
-	printf("(%d)", ret);
+	buffer[1] = '\0';
+
 	return (ret);
 }
 
@@ -51,8 +48,7 @@ int _writebuffer(char *buffer)
 int _putchar(char c, char *buffer)
 {
 	int ret = 0;
-	
-	printf("_strlen: (%d)\n", _strlen(buffer));
+
 	if (_strlen(buffer) + sizeof(c) >= 1024)
 	{
 		ret = _writebuffer(buffer);
@@ -63,3 +59,25 @@ int _putchar(char c, char *buffer)
 
 	return (ret);
 }
+
+/**
+ * _putstr - output a string to standard output
+ *
+ * @s: string to output
+ * @buffer: character buffer to store future output
+ *
+ * Return:	-1 on failure
+ *			1 on success;
+ */
+int _putstr(char *s, char buffer[])
+{
+	int ret = 0;
+
+	while (*s)
+	{
+		ret += _putchar(*s++, buffer);
+	}
+
+	return (ret);
+}
+

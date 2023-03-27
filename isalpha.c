@@ -10,8 +10,25 @@
  */
 int _isalpha(char c)
 {
-	if (((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || c == '%'))
-		return (1);
-	return (-1);
+	switch (c)
+	{
+		case 'd':
+		case 'i':
+		case 'u':
+		case 'o':
+		case 'x':
+		case 'X':
+		case '%':
+		case 'p':
+		case 'c':
+		case 's':
+		case 'b':
+		case 'S':
+		case 'r':
+		case 'R':
+			return (1);
+		default:
+			return (-1);
+	}
 }
 

@@ -12,21 +12,14 @@
  */
 int _putstring(char spec[], va_list args, char *buffer)
 {
-	int ret, temp_ret;
+	int ret = 0;
 	char *s;
 
 	spec[0] = spec[0];
 
 	s = va_arg(args, char *);
-	ret = 0;
 
-	while (*s)
-	{
-		temp_ret = _putchar(*s, buffer);
-
-		ret += temp_ret;
-		s++;
-	}
+	ret += _putstr(s, buffer);
 
 	return (ret);
 }
