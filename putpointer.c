@@ -12,7 +12,7 @@
  */
 int _putpointer(char spec[], va_list args, char *buffer)
 {
-	unsigned long int ret = 0;
+	int ret = 0;
 	unsigned long int n;
 
 	spec[0] = spec[0];
