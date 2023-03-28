@@ -62,7 +62,7 @@ int _putpaddingint(form_t *form, int sign, char *buffer)
  * Return:	-1 on failure
  *			1 on success;
  */
-int _putpadbase(form_t *f, unsigned long int n, int base, int u, char *buf);
+int _putpadbase(form_t *f, unsigned long int n, int base, int u, char *buf)
 {
 	int ret = 0, len;
 	int width = f->width || f->precision;

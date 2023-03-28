@@ -22,7 +22,7 @@ int _putoctal(char spec[], va_list args, char *buffer)
 
 	spec[0] = spec[0];
 
-	ret += _putpaddingbase(&form, n, 8, 0, buffer);
+	ret += _putpadbase(&form, n, 8, 0, buffer);
 
 	ret += _convertBase(n, 8, 0, buffer);
 
@@ -51,7 +51,7 @@ int _putoctallong(char spec[], va_list args, char *buffer)
 
 	spec[0] = spec[0];
 
-	ret += _putpaddingbase(&form, n, 8, 0, buffer);
+	ret += _putpadbase(&form, n, 8, 0, buffer);
 
 	ret += _convertBase(n, 8, 0, buffer);
 
@@ -81,7 +81,7 @@ int _putoctalshort(char spec[], va_list args, char *buffer)
 
 	spec[0] = spec[0];
 
-	ret += _putpaddingbase(&form, n, 8, 0, buffer);
+	ret += _putpadbase(&form, n, 8, 0, buffer);
 
 	ret += _convertBase(n, 8, 0, buffer);
 

@@ -22,7 +22,7 @@ int _putupperhex(char spec[], va_list args, char *buffer)
 
 	form = get_form(spec);
 
-	ret += _putpaddingbase(&form, n, 16, 1, buffer);
+	ret += _putpadbase(&form, n, 16, 1, buffer);
 
 	ret += _convertBase(n, 16, 1, buffer);
 
@@ -51,7 +51,7 @@ int _putupperhexlong(char spec[], va_list args, char *buffer)
 
 	form = get_form(spec);
 
-	ret += _putpaddingbase(&form, n, 16, 1, buffer);
+	ret += _putpadbase(&form, n, 16, 1, buffer);
 
 	ret += _convertBase(n, 16, 1, buffer);
 
@@ -81,7 +81,7 @@ int _putupperhexshort(char spec[], va_list args, char *buffer)
 
 	form = get_form(spec);
 
-	ret += _putpaddingbase(&form, n, 16, 1, buffer);
+	ret += _putpadbase(&form, n, 16, 1, buffer);
 
 	ret += _convertBase(n, 16, 1, buffer);
 

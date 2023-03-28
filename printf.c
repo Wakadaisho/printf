@@ -48,7 +48,7 @@ int _printf(const char *format, ...)
  */
 int _putarg(const char *s, va_list args, int *mod_length, char *buffer)
 {
-	int ret = 0, i, temp_ret;
+	int ret = 0, i;
 	char spec[10];
 	int (*f)(char [], va_list, char []);
 	form_t form;

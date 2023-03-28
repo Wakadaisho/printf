@@ -20,7 +20,7 @@ int _putlowerhex(char spec[], va_list args, char *buffer)
 
 	form = get_form(spec);
 
-	ret += _putpaddingbase(&form, n, 16, 1, buffer);
+	ret += _putpadbase(&form, n, 16, 1, buffer);
 
 	spec[0] = spec[0];
 
@@ -49,7 +49,7 @@ int _putlowerhexlong(char spec[], va_list args, char *buffer)
 
 	form = get_form(spec);
 
-	ret += _putpaddingbase(&form, n, 16, 1, buffer);
+	ret += _putpadbase(&form, n, 16, 1, buffer);
 
 	spec[0] = spec[0];
 
@@ -79,7 +79,7 @@ int _putlowerhexshort(char spec[], va_list args, char *buffer)
 
 	form = get_form(spec);
 
-	ret += _putpaddingbase(&form, n, 16, 1, buffer);
+	ret += _putpadbase(&form, n, 16, 1, buffer);
 
 	spec[0] = spec[0];
 
