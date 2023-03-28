@@ -1,5 +1,4 @@
 #include "main.h"
-#include <stdio.h>
 
 /**
  * _putreverse - print the revers of string passed in args
@@ -13,37 +12,22 @@
  */
 int _putreverse(char spec[], va_list args, char *buffer)
 {
-	int ret, placer, count = 0, i = 0, length, middle;
-	char *s, temp;
+	int ret = 0, i = 0;
+	char *s;
 
 	spec[0] = spec[0];
 
 	s = va_arg(args, char *);
-	
-	for(i = 0; s[i] != '\0'; i++)
+
+	while (s[i] != '\0')
 	{
-		count +=1;
-        }
-
-	length = count;
-	middle = length / 2;
-	
-
-
-	for (i = 0; i < middle; i++)
-	{
-		temp = s[i];
-		placer= length - (i+1);
-		s[i] = s[placer];
-		s[placer] = temp;
+		i++;
 	}
-	
-	i = 0;
-	while (*s)
+
+	for (i -= 1; i >= 0; i--)
 	{
-		ret =_putchar(s[i], buffer);
-		printf("%c", ret);
+		ret += _putchar(s[i], buffer);
 	}
-	
-	return(length);
-}	
+
+	return (ret);
+}

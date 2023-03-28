@@ -24,6 +24,7 @@ int (*get_spec(char *s))(char spec[], va_list args, char *buffer)
 		{"S", _putspecialstring},
 		{"p", _putpointer},
 		{"r", _putreverse},
+		{"R", _putrot13},
 		{NULL, NULL}
 	};
 
