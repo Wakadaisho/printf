@@ -48,33 +48,42 @@ int _printf(const char *format, ...)
  */
 int _putarg(const char *s, va_list args, int *mod_length, char *buffer)
 {
-	int ret, i;
+	int ret = 0, i, temp_ret;
 	char spec[10];
 	int (*f)(char [], va_list, char []);
+	form_t form;
 
 	*mod_length = 1;
 	spec[0] = s[0];
-
 	while (_isalpha(*(s + *mod_length)) == -1)
 	{
 		spec[*mod_length] = *(s + *mod_length);
 		*mod_length += 1;
 	}
-
 	spec[*mod_length] = *(s + *mod_length);
 	*mod_length += 1;
 	spec[*mod_length] = '\0';
-
-	f = get_spec(spec + (*mod_length - 1));
-
+	form = get_form(spec);
+	switch (form.length)
+	{
+		case 'l':
+			f = get_spec_long(spec + (*mod_length - 1));
+			break;
+		case 'h':
+			f = get_spec_short(spec + (*mod_length - 1));
+			break;
+		default:
+			f = get_spec(spec + (*mod_length - 1));
+			break;
+	}
 	if (f == NULL)
 	{
-		for (i = 0; i < *mod_length - 1; i++)
-			_putchar(*(spec + i), buffer);
-		return (*mod_length - 1);
+		for (i = 0; i < *mod_length; i++)
+		{
+			ret += _putchar(*(spec + i), buffer);
+		}
+		return (*mod_length - _strlen(spec) - 1);
 	}
-
 	ret = f(spec, args, buffer);
-
 	return (ret);
 }

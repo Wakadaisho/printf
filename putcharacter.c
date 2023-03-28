@@ -20,3 +20,26 @@ int _putcharacter(char spec[], va_list args, char *buffer)
 
 	return (ret);
 }
+
+/**
+ * _putpercent - prints a % sign
+ *
+ * @spec: possible modifier to specifier passed to format in printf
+ * @args: current state of variadic arguments passed
+ * @buffer: character buffer to store future output
+ *
+ * Return:	number of characters printed
+ *			-1 on failure
+ */
+int _putpercent(char spec[], va_list args, char *buffer)
+{
+	int ret;
+
+	spec[0] = spec[0];
+	args = args;
+
+	ret = _putchar('%', buffer);
+
+	return (ret);
+}
+

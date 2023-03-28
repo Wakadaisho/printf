@@ -95,6 +95,22 @@ typedef struct form_mod
 
 int (*get_spec(char *s))(char mod[], va_list args, char *buffer);
 
+int (*get_spec_short(char *s))(char mod[], va_list args, char *buffer);
+
+int (*get_spec_long(char *s))(char mod[], va_list args, char *buffer);
+
+/**
+ * _putpercent - prints a % sign
+ *
+ * @spec: possible modifier to specifier passed to format in printf
+ * @args: current state of variadic arguments passed
+ * @buffer: character buffer to store future output
+ *
+ * Return:	number of characters printed
+ *			-1 on failure
+ */
+int _putpercent(char spec[], va_list args, char *buffer);
+
 /**
  * get_form - return a struct showing what format modifiers are used
  *
@@ -113,6 +129,17 @@ form_t get_form(char *form);
  * Return: integer
  */
 unsigned long int _pow(unsigned long int n, int e);
+
+/**
+ * _baselength - returns the number of characters in a base
+ *
+ * @n: base 10 number to convert
+ * @base: base to convert to
+ *	1 for uppercase, 0 for lowercase
+ *
+ * Return: int, number of digits in converted value
+ */
+int _baselength(unsigned long int n, int base);
 
 /**
  * _convertBase - converts a base 10 number to any base up to 36
@@ -162,6 +189,8 @@ int _putstring(char spec[], va_list args, char *buffer);
  *			-1 on failure
  */
 int _putint(char spec[], va_list args, char *buffer);
+int _putintshort(char spec[], va_list args, char *buffer);
+int _putintlong(char spec[], va_list args, char *buffer);
 
 /**
  * _putbinary - print a number passed in args as binary
@@ -213,6 +242,20 @@ int _putpointer(char spec[], va_list args, char *buffer);
 int _putpaddingint(form_t *form, int sign, char *buffer);
 
 /**
+ * _putpadbase - base conversion padding if needed to standard output
+ *
+ * @f: flags to use
+ * @n: the number in base 10
+ * @base: base to convert number to
+ * @u: casing of output
+ * @buf: buffer to output characters to
+ *
+ * Return:	-1 on failure
+ *			1 on success;
+ */
+int _putpadbase(form_t *f, unsigned long int n, int base, int u, char *buf);
+
+/**
  * _putarg - print a an argument passed in args
  *
  * @s: pointer to location in string word staring with '%'
@@ -247,6 +290,8 @@ int _printf(const char *format, ...);
  *                      -1 on failure
  */
 int _putunsign(char spec[], va_list args, char *buffer);
+int _putunsignshort(char spec[], va_list args, char *buffer);
+int _putunsignlong(char spec[], va_list args, char *buffer);
 
 /**
  * _putoctal - print a number passed in args as an octal
@@ -259,6 +304,8 @@ int _putunsign(char spec[], va_list args, char *buffer);
  *                      -1 on failure
  */
 int _putoctal(char spec[], va_list args, char *buffer);
+int _putoctalshort(char spec[], va_list args, char *buffer);
+int _putoctallong(char spec[], va_list args, char *buffer);
 
 /**
  * _putlowerhex - print a number passed in args as hexadecimal with lowercase
@@ -271,6 +318,8 @@ int _putoctal(char spec[], va_list args, char *buffer);
  *                      -1 on failure
  */
 int _putlowerhex(char spec[], va_list args, char *buffer);
+int _putlowerhexshort(char spec[], va_list args, char *buffer);
+int _putlowerhexlong(char spec[], va_list args, char *buffer);
 
 /**
  * _putupperhex - print a number passed in args as hexadecimal with lowercase
@@ -283,6 +332,8 @@ int _putlowerhex(char spec[], va_list args, char *buffer);
  *                      -1 on failure
  */
 int _putupperhex(char spec[], va_list args, char *buffer);
+int _putupperhexshort(char spec[], va_list args, char *buffer);
+int _putupperhexlong(char spec[], va_list args, char *buffer);
 
 /**
  * _putreverse - print the revers of string passed in args
