@@ -284,4 +284,16 @@ int _putlowerhex(char spec[], va_list args, char *buffer);
  */
 int _putupperhex(char spec[], va_list args, char *buffer);
 
+/**
+ * _putreverse - print the revers of string passed in args
+ *
+ * @spec: possible modifier to specifier passed to format in printf
+ * @args: current state of variadic arguments passed
+ * @buffer: character buffer to store future output
+ *
+ * Return:	number of characters printed
+ *			-1 on failure
+ */
+int _putreverse(char spec[], va_list args, char *buffer);
+
 #endif /* _MAIN_H_ */
